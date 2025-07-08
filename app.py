@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from nlp_engine import get_bot_response
 
 app = FastAPI()
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,10 +16,14 @@ def home():
 
 @app.post("/chat")
 async def chat(request: Request):
-    data = await request.json()
-    user_input = data.get("message")
-    if not user_input:
-        return {"response": "Please provide a message."}
-    
-    response = get_bot_response(user_input)
-    return {"response": response}
+    try:
+        data = await request.json()
+        user_input = data.get("message")
+        if not user_input:
+            return {"response": "Please provide a message."}
+        
+        response = get_bot_response(user_input)
+        return {"response": response}
+    except Exception as e:
+        print("❌ Error:", e)
+        return {"response": "⚠ Server error. Please try again."}
