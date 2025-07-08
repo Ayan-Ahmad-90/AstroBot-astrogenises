@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="chat-container">
+    <!-- 🔷 HEADER -->
     <div class="header">
       <img src="https://png.pngtree.com/png-vector/20240827/ourmid/pngtree-astro-bot-bot-png-image_13454335.png" class="logo" alt="AstroBot Logo" />
       <div>
@@ -20,18 +21,32 @@
       </label>
     </div>
 
+    <!-- 🔷 CHAT BOX -->
     <div class="chat-box"></div>
 
+    <!-- 🔷 INPUT AREA -->
     <div class="input-area">
       <input id="userInput" type="text" placeholder="Ask me anything..." autocomplete="off" autofocus />
-      <button id="mic-btn" title="Voice Input">🎙️</button>
-      <button id="voice-toggle" title="Toggle Bot Voice">🔊</button>
-      <button id="clear-btn" title="Clear Chat">🗑️</button>
-      <button id="export-btn" title="Export Chat">📄</button>
-      <button onclick="sendMessage()">Send</button>
+      <button id="mic-btn" title="🎙️ Voice Input">🎙️</button>
+
+      <!-- 🔊 Voice Toggle Dropdown -->
+      <select id="voice-toggle" title="Bot Voice Language">
+        <option value="off">🔇 Voice Off</option>
+        <option value="hi-IN" selected>🇮🇳 Hindi</option>
+        <option value="en-IN">🇬🇧 English</option>
+      </select>
+
+      <!-- 🗑️ Clear & 📄 Export -->
+      <button id="clear-btn" title="🗑️ Clear Chat">🗑️</button>
+      <button id="export-btn" title="📄 Export Chat">📄</button>
+
+      <!-- Send Button -->
+      <button onclick="sendMessage()" title="Send Message">Send</button>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- 🔷 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  <script src="script.js"></script>
 </body>
 </html>
