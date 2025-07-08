@@ -287,3 +287,28 @@ h1 {
 #clear-btn:hover, #export-btn:hover {
   background-color: #cc3333;
 }
+
+.suggestion-box {
+  position: absolute;
+  background: white;
+  border-radius: 6px;
+  color: black;
+  z-index: 100;
+  width: 80%;
+  max-width: 500px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f2f2f2;
+}
+
