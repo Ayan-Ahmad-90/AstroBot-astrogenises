@@ -229,3 +229,39 @@ function showSuggestions() {
   suggestionBox.innerHTML = suggestionHTML;
   selectedIndex = -1;
 }
+// 🎙️ Mic Button Voice Recognition
+const micBtn = document.getElementById("mic-btn");
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = selectedVoiceLang || "hi-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  micBtn.addEventListener("click", () => {
+    recognition.start();
+    micBtn.innerText = "🎧 Listening...";
+  });
+
+  recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript.trim();
+    document.getElementById("userInput").value = transcript;
+    micBtn.innerText = "🎙️";
+    sendMessage(); // Optional: auto-send after voice
+  };
+
+  recognition.onerror = function(event) {
+    console.error("Voice error:", event.error);
+    micBtn.innerText = "🎙️";
+    alert("🎙️ Voice recognition error: " + event.error);
+  };
+
+  recognition.onend = () => {
+    micBtn.innerText = "🎙️";
+  };
+} else {
+  micBtn.disabled = true;
+  micBtn.title = "Voice not supported on this browser.";
+}
+
