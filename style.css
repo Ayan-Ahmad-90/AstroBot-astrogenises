@@ -255,3 +255,35 @@ h1 {
     font-size: 18px;
   }
 }
+
+#mic-btn,
+#voice-toggle {
+  background-color: #555;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 0 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#mic-btn:hover,
+#voice-toggle:hover {
+  background-color: #777;
+}
+
+#clear-btn, #export-btn {
+  background-color: #aa0000;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 0 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#clear-btn:hover, #export-btn:hover {
+  background-color: #cc3333;
+}
