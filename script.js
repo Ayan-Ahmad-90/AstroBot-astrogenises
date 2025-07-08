@@ -1,21 +1,20 @@
 let qaPairs = [];
 let fuse;
-let selectedVoiceLang = "hi-IN"; // Default to Hindi
+let selectedVoiceLang = "hi-IN";
 let isSpeaking = false;
 
-// Load Q&A JSON and set up Fuse.js
+// Load Q&A JSON
 fetch("qa_pairs.json")
   .then(res => res.json())
   .then(data => {
     qaPairs = data;
     fuse = new Fuse(qaPairs, {
       keys: ["question"],
-      threshold: 0.45, // Allow mild spelling mistakes
+      threshold: 0.4,
       includeScore: true
     });
   });
 
-// Wait until DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("userInput");
   const themeToggle = document.getElementById("btn-mode");
@@ -30,11 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") sendMessage();
   });
 
-  themeToggle?.addEventListener("change", () => {
+  input.addEventListener("input", showSuggestions);
+
+  themeToggle.addEventListener("change", () => {
     setTheme(themeToggle.checked);
   });
 
-  voiceSelector?.addEventListener("change", () => {
+  voiceSelector.addEventListener("change", () => {
     selectedVoiceLang = voiceSelector.value;
   });
 
@@ -52,9 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
     a.download = "astrobot_chat.txt";
     a.click();
   });
+
+  setupMic(); // 🎤 Initialize voice input
 });
 
-// Apply Light or Dark Theme
+// THEME TOGGLE
 function setTheme(isDark) {
   const body = document.body;
   const container = document.querySelector(".chat-container");
@@ -73,16 +76,7 @@ function updateMessageTheme(isDark) {
   });
 }
 
-// Normalize input (remove extra spaces, lowercased)
-function normalize(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s\u0900-\u097F]/g, "") // keep Hindi/English
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-// Main Chat Function
+// MAIN MESSAGE HANDLER
 async function sendMessage() {
   const input = document.getElementById("userInput");
   const message = input.value.trim();
@@ -91,10 +85,10 @@ async function sendMessage() {
   appendMessage("user", message);
   input.value = "";
   stopSpeaking();
+  clearSuggestions();
 
-  const query = normalize(message);
-  const results = fuse.search(query);
-
+  // Try local match first
+  const results = fuse.search(message);
   if (results.length > 0 && results[0].score < 0.5) {
     const best = results[0].item;
     appendMessage("bot", best.answer);
@@ -102,14 +96,13 @@ async function sendMessage() {
     return;
   }
 
-  // Fallback to backend API
+  // API fallback
   try {
     const res = await fetch("http://127.0.0.1:8000/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message })
     });
-
     const data = await res.json();
     const reply = data.response || "🤖 Sorry, I don't have an answer.";
     appendMessage("bot", reply);
@@ -119,19 +112,19 @@ async function sendMessage() {
   }
 }
 
-// Append messages to the chat UI
+// APPEND CHAT TO UI
 function appendMessage(sender, text) {
   const chatBox = document.querySelector(".chat-box");
   const msg = document.createElement("div");
   msg.className = `${sender}-msg`;
-  msg.classList.add(document.getElementById("btn-mode")?.checked ? "night" : "light");
+  msg.classList.add(document.getElementById("btn-mode").checked ? "night" : "light");
   msg.innerText = text;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
   saveChat(sender, text);
 }
 
-// Text-to-Speech
+// TEXT-TO-SPEECH
 function speak(text) {
   if (selectedVoiceLang === "off") return;
 
@@ -154,17 +147,76 @@ function stopSpeaking() {
   }
 }
 
-// Save chat to localStorage
+// SAVE CHAT
 function saveChat(sender, text) {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.push({ sender, text });
   localStorage.setItem("chatHistory", JSON.stringify(history));
 }
 
-// Load previous chat
 function loadChatHistory() {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.forEach(msg => {
     appendMessage(msg.sender, msg.text);
   });
+}
+
+// 🎙️ MIC VOICE INPUT
+function setupMic() {
+  const micBtn = document.getElementById("mic-btn");
+  const inputBox = document.getElementById("userInput");
+
+  let recognition;
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = "hi-IN";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      inputBox.value = transcript;
+      sendMessage(); // optional: auto-send
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Voice error:", event.error);
+    };
+
+    micBtn.addEventListener("click", () => {
+      recognition.lang = document.getElementById("voice-toggle").value.includes("hi") ? "hi-IN" : "en-IN";
+      recognition.start();
+    });
+  } else {
+    micBtn.disabled = true;
+    micBtn.title = "Voice not supported in this browser";
+  }
+}
+
+// 🧠 AUTO SUGGESTIONS
+function showSuggestions() {
+  const query = document.getElementById("userInput").value.trim();
+  const suggestionBox = document.getElementById("suggestions");
+
+  if (!query) {
+    suggestionBox.innerHTML = "";
+    return;
+  }
+
+  const results = fuse.search(query).slice(0, 5);
+  suggestionBox.innerHTML = results.map(r =>
+    `<div class="suggestion-item" onclick="fillSuggestion('${r.item.question}')">${r.item.question}</div>`
+  ).join("");
+}
+
+function fillSuggestion(text) {
+  document.getElementById("userInput").value = text;
+  document.getElementById("suggestions").innerHTML = "";
+  sendMessage(); // Optional: auto-send
+}
+
+function clearSuggestions() {
+  const suggestionBox = document.getElementById("suggestions");
+  suggestionBox.innerHTML = "";
 }
