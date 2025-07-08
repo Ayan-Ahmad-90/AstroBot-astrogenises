@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Theme functions
+// Theme
 function setTheme(isDark) {
   document.body.className = isDark ? "night-theme" : "light-theme";
   document.querySelector(".chat-container").className = `chat-container ${isDark ? "night" : "light"}`;
@@ -134,7 +134,7 @@ async function sendMessage() {
   }
 }
 
-// Append message to UI
+// Message appending
 function appendMessage(sender, text) {
   const chatBox = document.querySelector(".chat-box");
   const msg = document.createElement("div");
@@ -146,7 +146,7 @@ function appendMessage(sender, text) {
   saveChat(sender, text);
 }
 
-// Typing animation
+// Typing animation with space fix
 function appendTypingAnimation(text) {
   const chatBox = document.querySelector(".chat-box");
   const msg = document.createElement("div");
@@ -155,14 +155,15 @@ function appendTypingAnimation(text) {
   chatBox.appendChild(msg);
 
   let i = 0;
+  const cleanText = text.replace(/\s+/g, " "); // Normalize multiple spaces
   const typing = setInterval(() => {
-    msg.textContent += text[i];
+    msg.textContent += cleanText[i];
     i++;
-    if (i >= text.length) clearInterval(typing);
+    if (i >= cleanText.length) clearInterval(typing);
   }, 20);
 
   chatBox.scrollTop = chatBox.scrollHeight;
-  saveChat("bot", text);
+  saveChat("bot", cleanText);
 }
 
 // Voice
@@ -184,7 +185,7 @@ function stopSpeaking() {
   }
 }
 
-// Local Storage Chat History
+// Local Storage
 function saveChat(sender, text) {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.push({ sender, text });
@@ -196,7 +197,7 @@ function loadChatHistory() {
   history.forEach(msg => appendMessage(msg.sender, msg.text));
 }
 
-// Suggestion dropdown
+// Suggestions
 function showSuggestions() {
   const input = document.getElementById("userInput");
   const val = input.value.toLowerCase();
