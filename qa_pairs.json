@@ -474,6 +474,390 @@
   {
     "question": "What is expected from ISRO by 2025?",
     "answer": "By 2025, ISRO aims to complete the crewed Gaganyaan mission, progress in reusable launch vehicles, and possibly launch Shukrayaan-1."
+  },
+   {
+    "question": "What is the full form of ISRO?",
+    "answer": "ISRO stands for Indian Space Research Organisation."
+  },
+  {
+    "question": "When was ISRO founded?",
+    "answer": "ISRO was founded on August 15, 1969."
+  },
+  {
+    "question": "Who is the founder of ISRO?",
+    "answer": "Dr. Vikram Sarabhai is the founder of ISRO."
+  },
+  {
+    "question": "Where is the ISRO headquarters located?",
+    "answer": "ISRO headquarters is located in Bengaluru, India."
+  },
+  {
+    "question": "What was India's first satellite?",
+    "answer": "Aryabhata was India's first satellite, launched in 1975."
+  },
+  {
+    "question": "In which year was Aryabhata launched?",
+    "answer": "Aryabhata was launched in 1975."
+  },
+  {
+    "question": "Which ISRO mission first reached the Moon?",
+    "answer": "Chandrayaan-1 was the first Indian mission to the Moon."
+  },
+  {
+    "question": "Name ISRO's Mars mission.",
+    "answer": "ISRO's Mars mission is called Mangalyaan or MOM (Mars Orbiter Mission)."
+  },
+  {
+    "question": "When was Mangalyaan launched?",
+    "answer": "Mangalyaan was launched on November 5, 2013."
+  },
+  {
+    "question": "What is the name of ISRO's Gaganyaan mission?",
+    "answer": "Gaganyaan is India's human spaceflight program by ISRO."
+  },
+  {
+    "question": "Who was the first Indian to go to space?",
+    "answer": "Rakesh Sharma was the first Indian to go to space in 1984."
+  },
+  {
+    "question": "What is the full form of PSLV?",
+    "answer": "PSLV stands for Polar Satellite Launch Vehicle."
+  },
+  {
+    "question": "What is the full form of GSLV?",
+    "answer": "GSLV stands for Geosynchronous Satellite Launch Vehicle."
+  },
+  {
+    "question": "Which launch vehicle is used to send heavy satellites?",
+    "answer": "GSLV Mk III (LVM3) is used to launch heavy satellites."
+  },
+  {
+    "question": "Which ISRO center is located in Sriharikota?",
+    "answer": "Satish Dhawan Space Centre (SDSC) is located in Sriharikota."
+  },
+  {
+    "question": "What does SDSC SHAR stand for?",
+    "answer": "Satish Dhawan Space Centre, Sriharikota Range."
+  },
+  {
+    "question": "What was the objective of Chandrayaan-1?",
+    "answer": "To map the Moon's surface and detect the presence of water molecules."
+  },
+  {
+    "question": "What is the name of the Moon rover used in Chandrayaan-3?",
+    "answer": "Pragyan is the name of the rover in Chandrayaan-3."
+  },
+  {
+    "question": "Which country helped India in launching Aryabhata?",
+    "answer": "The Soviet Union (now Russia) helped launch Aryabhata."
+  },
+  {
+    "question": "What is the name of ISRO's solar mission?",
+    "answer": "Aditya-L1 is ISRO’s solar mission."
+  },
+  {
+    "question": "Differentiate between PSLV and GSLV.",
+    "answer": "PSLV is for low-Earth orbits; GSLV is for geostationary orbits and can carry heavier payloads."
+  },
+  {
+    "question": "What are cryogenic engines?",
+    "answer": "Engines that use cryogenic fuels like liquid hydrogen and oxygen at very low temperatures."
+  },
+  {
+    "question": "What is the significance of the LVM3 rocket?",
+    "answer": "It is ISRO's most powerful rocket used for Gaganyaan and Chandrayaan-3 missions."
+  },
+  {
+    "question": "Define geostationary orbit.",
+    "answer": "A geostationary orbit is a circular orbit 35,786 km above Earth's equator where satellites appear stationary."
+  },
+  {
+    "question": "Define polar orbit.",
+    "answer": "A polar orbit passes over Earth's poles, covering the entire globe over time."
+  },
+  {
+    "question": "What is NAVIC?",
+    "answer": "NAVIC is India's regional satellite navigation system like GPS."
+  },
+  {
+    "question": "How does remote sensing work?",
+    "answer": "Remote sensing uses satellites to gather information about Earth's surface without direct contact."
+  },
+  {
+    "question": "What are communication satellites?",
+    "answer": "Satellites used for telecom, internet, radio, and TV signal transmission."
+  },
+  {
+    "question": "What is INSAT?",
+    "answer": "INSAT (Indian National Satellite System) is used for weather forecasting and communication."
+  },
+  {
+    "question": "What is the use of RISAT satellites?",
+    "answer": "RISAT satellites provide all-weather, day-and-night Earth observation."
+  },
+  {
+    "question": "What is the difference between Earth observation and weather satellites?",
+    "answer": "Earth observation satellites monitor land and oceans, while weather satellites focus on atmospheric conditions like clouds and storms."
+  },
+  {
+    "question": "What is the IRNSS system?",
+    "answer": "IRNSS is the Indian Regional Navigation Satellite System, similar to GPS."
+  },
+  {
+    "question": "What’s the purpose of Antrix Corporation?",
+    "answer": "Antrix is ISRO’s commercial arm for satellite launches and space services."
+  },
+  {
+    "question": "What is GSAT-6A?",
+    "answer": "GSAT-6A is a communication satellite launched by ISRO."
+  },
+  {
+    "question": "Name a failed ISRO mission and its reason.",
+    "answer": "Chandrayaan-2 failed to land on the Moon due to a software glitch in the lander."
+  },
+  {
+    "question": "Explain the significance of Chandrayaan-3’s success.",
+    "answer": "Chandrayaan-3 made India the first country to land near the Moon’s south pole."
+  },
+  {
+    "question": "What is the purpose of the Aditya-L1 mission?",
+    "answer": "Aditya-L1 studies the Sun, especially solar flares and corona."
+  },
+  {
+    "question": "Explain the role of ISRO in disaster management.",
+    "answer": "ISRO provides satellite images for flood, cyclone, drought, and earthquake management."
+  },
+  {
+    "question": "Name the satellite launched for educational purposes.",
+    "answer": "INSPIRE-SAT and ANUSAT were launched for educational and research purposes."
+  },
+  {
+    "question": "What is EOS-01?",
+    "answer": "EOS-01 is an Earth observation satellite used for agriculture, forestry, and disaster management."
+  },
+  {
+    "question": "What is telemetry?",
+    "answer": "Telemetry is the automatic transmission of data from spacecraft to ground stations."
+  },
+  {
+    "question": "What is the use of satellite telemetry data?",
+    "answer": "It helps monitor the health, status, and location of a spacecraft."
+  },
+  {
+    "question": "What is the significance of APIs in satellite data usage?",
+    "answer": "APIs allow users to access ISRO satellite data in web apps and tools."
+  },
+  {
+    "question": "What are JSON and XML formats in satellite data transmission?",
+    "answer": "They are file formats used to structure and exchange satellite data."
+  },
+  {
+    "question": "Explain LEO, MEO, and GEO.",
+    "answer": "LEO is low Earth orbit, MEO is medium Earth orbit, and GEO is geostationary orbit."
+  },
+  {
+    "question": "Which data structures are used in ground station scheduling?",
+    "answer": "Queue, priority queue, and scheduling algorithms like FCFS and round robin."
+  },
+  {
+    "question": "What is a PID controller? Where is it used in spacecraft?",
+    "answer": "PID controllers regulate systems like satellite attitude and thruster control."
+  },
+  {
+    "question": "What are onboard computers (OBC)?",
+    "answer": "OBCs control and manage all spacecraft operations and data."
+  },
+  {
+    "question": "What is RTOS and how is it used in ISRO?",
+    "answer": "RTOS (Real-Time Operating System) manages real-time tasks like data collection and control in ISRO satellites."
+  },
+  {
+    "question": "Explain basic working of a satellite ground station.",
+    "answer": "It receives telemetry, sends commands, and tracks satellites."
+  },
+  {
+    "question": "What is TT&C (Telemetry, Tracking & Command)?",
+    "answer": "TT&C refers to sending commands, tracking position, and receiving satellite data."
+  },
+  {
+    "question": "How do ISRO satellites communicate with Earth?",
+    "answer": "They use radio waves and antennas to send data to ground stations."
+  },
+  {
+    "question": "What is ISRO’s open-source satellite data platform called?",
+    "answer": "It is called Bhuvan, ISRO’s geoportal."
+  },
+  {
+    "question": "Difference between HTTP and FTP in data sharing from satellites.",
+    "answer": "HTTP is used for web access; FTP is used for large satellite data file transfer."
+  },
+  {
+    "question": "What’s the role of GAGAN in ISRO?",
+    "answer": "GAGAN improves GPS accuracy for aviation navigation in India."
+  },
+  {
+    "question": "What programming languages are used in ISRO systems?",
+    "answer": "ISRO uses C, C++, Fortran, Python, and MATLAB."
+  },
+  {
+    "question": "What was the mission objective of MOM (Mars Orbiter Mission)?",
+    "answer": "To study Mars’ atmosphere, surface, and orbit around the planet."
+  },
+  {
+    "question": "How much did Mangalyaan cost?",
+    "answer": "It cost around ₹450 crores ($74 million), one of the cheapest Mars missions."
+  },
+  {
+    "question": "Why is Mangalyaan considered a success?",
+    "answer": "Because it succeeded in its first attempt and lasted beyond its life span."
+  },
+  {
+    "question": "What is the name of ISRO’s human spaceflight program?",
+    "answer": "Gaganyaan is ISRO's human space program."
+  },
+  {
+    "question": "What is the use of the SPOT satellite series?",
+    "answer": "SPOT satellites are used for Earth imaging and environmental monitoring."
+  },
+  {
+    "question": "How many launches has ISRO conducted till 2024?",
+    "answer": "ISRO has conducted over 100 launches till 2024."
+  },
+  {
+    "question": "What makes Chandrayaan-3 globally significant?",
+    "answer": "India became the first country to land near the Moon’s south pole."
+  },
+  {
+    "question": "What was the failure reason of Chandrayaan-2?",
+    "answer": "A software issue caused the lander to crash during descent."
+  },
+  {
+    "question": "Which country did ISRO collaborate with for NISAR?",
+    "answer": "ISRO collaborated with NASA for the NISAR mission."
+  },
+  {
+    "question": "What is the difference between NASA and ISRO missions?",
+    "answer": "NASA has larger budgets and crewed missions, while ISRO focuses on cost-effective, unmanned missions."
+  },
+  {
+    "question": "What is ISRO’s role in climate studies?",
+    "answer": "ISRO monitors climate using satellites for temperature, rainfall, and carbon data."
+  },
+  {
+    "question": "What is CARTOSAT used for?",
+    "answer": "CARTOSAT satellites are used for high-resolution Earth imaging and mapping."
+  },
+  {
+    "question": "Which ISRO center handles satellite fabrication?",
+    "answer": "U R Rao Satellite Centre (URSC) in Bengaluru handles satellite fabrication."
+  },
+  {
+    "question": "Which launch vehicle did Chandrayaan-3 use?",
+    "answer": "Chandrayaan-3 was launched using the LVM3-M4 rocket."
+  },
+  {
+    "question": "How many payloads were there in Chandrayaan-1?",
+    "answer": "Chandrayaan-1 had 11 scientific payloads, including international instruments."
+  },
+  {
+    "question": "What is a sun-synchronous orbit?",
+    "answer": "It’s a polar orbit where the satellite passes over the same part of Earth at the same local time every day."
+  },
+  {
+    "question": "What is the name of India’s spaceport?",
+    "answer": "India’s main spaceport is Satish Dhawan Space Centre (SDSC) in Sriharikota."
+  },
+  {
+    "question": "What is SSLV?",
+    "answer": "SSLV (Small Satellite Launch Vehicle) is ISRO’s lightweight rocket for launching small payloads."
+  },
+  {
+    "question": "What was ISRO’s first commercial satellite launch?",
+    "answer": "ISRO’s first commercial satellite launch was for the ArabSat-1B using Ariane in 1985."
+  },
+  {
+    "question": "What is IN-SPACe?",
+    "answer": "IN-SPACe (Indian National Space Promotion and Authorization Center) helps private companies work with ISRO."
+  },
+  {
+    "question": "Discuss the evolution of Indian satellite technology.",
+    "answer": "ISRO evolved from Aryabhata in 1975 to advanced missions like Chandrayaan, Gaganyaan, and Aditya-L1."
+  },
+  {
+    "question": "Explain India’s journey from Aryabhata to Aditya-L1.",
+    "answer": "India moved from basic satellite tech (Aryabhata) to solar science (Aditya-L1) with many milestones in between."
+  },
+  {
+    "question": "Compare Chandrayaan-1, 2, and 3.",
+    "answer": "Chandrayaan-1 was an orbiter, 2 had an orbiter+lander+rover but failed to land, and 3 successfully landed on the Moon."
+  },
+  {
+    "question": "What are the main goals of Gaganyaan?",
+    "answer": "To send Indian astronauts to low Earth orbit and safely return them to Earth."
+  },
+  {
+    "question": "How does ISRO support startups?",
+    "answer": "ISRO provides technical help, facilities, and collaboration through IN-SPACe and ISpA."
+  },
+  {
+    "question": "How can students participate in ISRO projects?",
+    "answer": "Through internships, online programs like YUVIKA, and by proposing projects to IN-SPACe."
+  },
+  {
+    "question": "What is the role of VSSC (Vikram Sarabhai Space Centre)?",
+    "answer": "VSSC focuses on rocket development, launch vehicles, and propulsion systems."
+  },
+  {
+    "question": "Write a report on ISRO’s international collaborations.",
+    "answer": "ISRO works with NASA, CNES, JAXA, Roscosmos, and more in joint missions, satellite launches, and data sharing."
+  },
+  {
+    "question": "Suggest innovative uses of satellite data for agriculture.",
+    "answer": "For crop health monitoring, drought alerts, soil mapping, and irrigation planning."
+  },
+  {
+    "question": "How can ISRO help in urban planning?",
+    "answer": "By providing satellite images for land use, infrastructure growth, and disaster planning."
+  },
+  {
+    "question": "How does satellite imaging help in climate monitoring?",
+    "answer": "It tracks temperature, CO2 levels, glaciers, rainfall, and sea level rise."
+  },
+  {
+    "question": "What would be a good project idea for an ISRO hackathon?",
+    "answer": "A climate monitoring app using ISRO’s Bhuvan or APIs like VEDAS or GAGAN."
+  },
+  {
+    "question": "How can ISRO data help in ocean studies?",
+    "answer": "It helps study sea surface temperature, ocean color, fisheries, and cyclones."
+  },
+  {
+    "question": "What are some job roles in ISRO for engineers?",
+    "answer": "Engineers work in spacecraft design, software, electronics, propulsion, and mission control."
+  },
+  {
+    "question": "How to apply for an internship at ISRO?",
+    "answer": "Apply through ISRO's official website or write to scientists via academic references."
+  },
+  {
+    "question": "Write a mission plan for a student satellite launch.",
+    "answer": "Design objectives, payload, orbit, testing, and launch coordination with ISRO under Student Satellite Program."
+  },
+  {
+    "question": "What are the ethical concerns in satellite surveillance?",
+    "answer": "Privacy invasion, misuse of data, and over-surveillance without public awareness."
+  },
+  {
+    "question": "How can AI be used in space missions?",
+    "answer": "AI helps in autonomous navigation, image analysis, fault detection, and mission planning."
+  },
+  {
+    "question": "Suggest a mobile app idea using ISRO APIs.",
+    "answer": "An app that warns about natural disasters using ISRO satellite data and real-time alerts."
+  },
+  {
+    "question": "Predict the future of Indian space exploration in the next decade.",
+    "answer": "Human spaceflights, space stations, deep space missions, reusable rockets, and private space startups."
   }
 ]
 
