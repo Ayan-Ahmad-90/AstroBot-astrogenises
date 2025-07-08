@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AstroBot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      <img src="https://png.pngtree.com/png-vector/20240827/ourmid/pngtree-astro-bot-bot-png-image_13454335.png" class="logo" alt="AstroBot Logo" />
+      <div>
+        <h1>AstroBot</h1>
+        <p class="subheading">Astro Space Assistant</p>
+      </div>
+      <label class="mode-toggle">
+        <input type="checkbox" id="btn-mode" />
+        <span class="slider"><span class="emoji"></span></span>
+      </label>
+    </div>
+
+    <div class="chat-box"></div>
+
+    <div class="input-area">
+      <input id="userInput" type="text" placeholder="Ask me anything..." autocomplete="off" autofocus />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
