@@ -1,7 +1,10 @@
 import json
+import os
 
-with open("back-end/data1/qa_pairs.json", "r", encoding="utf-8") as file:
+qa_path = os.path.join(os.path.dirname(__file__), "data1", "qa_pairs.json")
+with open(qa_path, "r", encoding="utf-8") as file:
     qa_data = json.load(file)
+
 
 def get_bot_response(user_input):
     user_input = user_input.lower()
