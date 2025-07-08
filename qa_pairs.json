@@ -12,11 +12,11 @@
     "answer": "Mangalyaan is India’s Mars Orbiter Mission, the first Indian mission to Mars."
   },
   {
-    "question": "what is isro",
+    "question": "What is ISRO?",
     "answer": "ISRO stands for Indian Space Research Organisation. It is India's national space agency."
   },
   {
-    "question": "who is the chairman of isro",
+    "question": "Who is the chairman of ISRO?",
     "answer": "As of 2024, the chairman of ISRO is S. Somanath."
   },
   {
@@ -33,7 +33,7 @@
   },
   {
     "question": "What is GSLV?",
-    "answer": "GSLV stands for Geosynchronous Satellite Launch Vehicle, used for heavier satellites into geosynchronous orbit."
+    "answer": "GSLV stands for Geosynchronous Satellite Launch Vehicle, used for launching heavier satellites into geosynchronous orbit."
   },
   {
     "question": "What is the full form of ISRO?",
@@ -78,5 +78,65 @@
   {
     "question": "What is SPOT in the context of ISRO?",
     "answer": "SPOT refers to a French Earth observation satellite series that ISRO collaborated with for data exchange."
+  },
+  {
+    "question": "Who designed India's first rocket?",
+    "answer": "India's first rocket was designed under the guidance of Dr. Vikram Sarabhai and launched in 1963 from Thumba."
+  },
+  {
+    "question": "When and where was India's first rocket launched?",
+    "answer": "India's first rocket was launched on November 21, 1963, from Thumba Equatorial Rocket Launching Station (TERLS) in Kerala."
+  },
+  {
+    "question": "What is Chandrayaan-3?",
+    "answer": "Chandrayaan-3 is India's third lunar exploration mission which successfully landed on the Moon's south pole in 2023."
+  },
+  {
+    "question": "What are the key achievements of Chandrayaan-2?",
+    "answer": "Chandrayaan-2 successfully placed an orbiter around the Moon, which continues to send data for lunar research."
+  },
+  {
+    "question": "What is the name of ISRO's Mars mission?",
+    "answer": "ISRO's Mars mission is called Mangalyaan or Mars Orbiter Mission (MOM)."
+  },
+  {
+    "question": "Who was the first scientist to propose India's space program?",
+    "answer": "Dr. Vikram Sarabhai is considered the father of India's space program."
+  },
+  {
+    "question": "Which Indian missile scientist also contributed to ISRO?",
+    "answer": "Dr. A.P.J. Abdul Kalam contributed to ISRO in developing India's Satellite Launch Vehicle (SLV)."
+  },
+  {
+    "question": "What is SLV-3?",
+    "answer": "SLV-3 (Satellite Launch Vehicle) was India's first indigenously developed launch vehicle, launched in 1980."
+  },
+  {
+    "question": "Which satellite did SLV-3 launch?",
+    "answer": "SLV-3 successfully launched the Rohini Satellite (RS-1) into orbit in 1980."
+  },
+  {
+    "question": "What is ISRO's role in missile development?",
+    "answer": "Though ISRO focuses on space technology, early ISRO scientists like Dr. Kalam later contributed to missile development in DRDO."
+  },
+  {
+    "question": "What is Gaganyaan?",
+    "answer": "Gaganyaan is India's first human spaceflight mission being developed by ISRO."
+  },
+  {
+    "question": "What is the name of ISRO’s launch site?",
+    "answer": "ISRO’s main launch site is the Satish Dhawan Space Centre in Sriharikota, Andhra Pradesh."
+  },
+  {
+    "question": "What is the purpose of the EDUSAT satellite?",
+    "answer": "EDUSAT was launched by ISRO to provide distance learning and educational services via satellite."
+  },
+  {
+    "question": "What is the role of Liquid Propulsion Systems Centre (LPSC)?",
+    "answer": "LPSC develops liquid propulsion engines used in ISRO's launch vehicles like PSLV and GSLV."
+  },
+  {
+    "question": "Which Indian satellite helped in crop and soil monitoring?",
+    "answer": "Satellites like the IRS (Indian Remote Sensing) series are used by ISRO for agriculture and soil monitoring."
   }
 ]
