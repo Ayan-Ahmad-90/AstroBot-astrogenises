@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     input.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
-            speechSynthesis.cancel(); // 🛑 Stop speaking
+            speechSynthesis.cancel(); // Stop speaking on new input
             sendMessage();
         }
     });
@@ -100,6 +100,7 @@ async function typeMessage(sender, text, delay = 20) {
     msg.classList.add(document.getElementById("btn-mode").checked ? "night" : "light");
     chatBox.appendChild(msg);
 
+    // ✅ Fix spacing issue
     const cleanText = text.replace(/\s+/g, " ").trim();
 
     if (isVoiceEnabled) speakText(cleanText);
@@ -127,9 +128,9 @@ async function fetchWithRetry(url, options, retries = 1) {
 }
 
 function speakText(text) {
-    speechSynthesis.cancel(); // Stop previous voice
+    speechSynthesis.cancel(); // Stop previous speech
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "hi-IN";
+    utterance.lang = "hi-IN";        // ✅ Hindi voice
     utterance.rate = 0.95;
     utterance.pitch = 1.1;
     speechSynthesis.speak(utterance);
@@ -148,7 +149,7 @@ function startVoiceRecognition() {
     };
 
     recognition.onerror = (event) => {
-        alert("🎙️ Voice error: " + event.error);
+        alert("🎙️ Voice input error: " + event.error);
     };
 
     recognition.start();
