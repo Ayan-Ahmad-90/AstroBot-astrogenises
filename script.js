@@ -3,7 +3,7 @@ let fuse;
 let selectedVoiceLang = "hi-IN";
 let isSpeaking = false;
 
-// Load Q&A JSON
+// Load JSON and setup Fuse.js
 fetch("qa_pairs.json")
   .then(res => res.json())
   .then(data => {
@@ -21,15 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const voiceSelector = document.getElementById("voice-toggle");
   const clearBtn = document.getElementById("clear-btn");
   const exportBtn = document.getElementById("export-btn");
+  const micBtn = document.getElementById("mic-btn");
 
   setTheme(false);
   loadChatHistory();
 
+  input.addEventListener("input", handleSuggestions);
   input.addEventListener("keypress", e => {
     if (e.key === "Enter") sendMessage();
   });
-
-  input.addEventListener("input", showSuggestions);
 
   themeToggle.addEventListener("change", () => {
     setTheme(themeToggle.checked);
@@ -54,15 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
     a.click();
   });
 
-  setupMic(); // 🎤 Initialize voice input
+  micBtn?.addEventListener("click", startVoiceInput);
 });
 
-// THEME TOGGLE
+// Theme toggle
 function setTheme(isDark) {
   const body = document.body;
   const container = document.querySelector(".chat-container");
   const chatBox = document.querySelector(".chat-box");
-
   body.className = isDark ? "night-theme" : "light-theme";
   container.className = `chat-container ${isDark ? "night" : "light"}`;
   chatBox.className = `chat-box ${isDark ? "night" : "light"}`;
@@ -76,27 +75,27 @@ function updateMessageTheme(isDark) {
   });
 }
 
-// MAIN MESSAGE HANDLER
+// Main chat handler
 async function sendMessage() {
   const input = document.getElementById("userInput");
   const message = input.value.trim();
   if (!message) return;
-
   appendMessage("user", message);
   input.value = "";
   stopSpeaking();
-  clearSuggestions();
+  hideSuggestions();
+  showTypingIndicator();
 
-  // Try local match first
   const results = fuse.search(message);
   if (results.length > 0 && results[0].score < 0.5) {
     const best = results[0].item;
-    appendMessage("bot", best.answer);
-    speak(best.answer);
+    setTimeout(() => {
+      removeTypingIndicator();
+      appendMessage("bot", best.answer);
+    }, 1000);
     return;
   }
 
-  // API fallback
   try {
     const res = await fetch("http://127.0.0.1:8000/chat", {
       method: "POST",
@@ -105,39 +104,55 @@ async function sendMessage() {
     });
     const data = await res.json();
     const reply = data.response || "🤖 Sorry, I don't have an answer.";
-    appendMessage("bot", reply);
-    speak(reply);
-  } catch (err) {
+    setTimeout(() => {
+      removeTypingIndicator();
+      appendMessage("bot", reply);
+    }, 1000);
+  } catch {
+    removeTypingIndicator();
     appendMessage("bot", "⚠ Server error. Please try again.");
   }
 }
 
-// APPEND CHAT TO UI
 function appendMessage(sender, text) {
   const chatBox = document.querySelector(".chat-box");
   const msg = document.createElement("div");
   msg.className = `${sender}-msg`;
   msg.classList.add(document.getElementById("btn-mode").checked ? "night" : "light");
-  msg.innerText = text;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-  saveChat(sender, text);
+
+  if (sender === "bot") {
+    let i = 0;
+    msg.innerText = "";
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    const typing = setInterval(() => {
+      if (i < text.length) {
+        msg.innerText += text.charAt(i);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        i++;
+      } else {
+        clearInterval(typing);
+        saveChat(sender, text);
+        speak(text);
+      }
+    }, 30);
+  } else {
+    msg.innerText = text;
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    saveChat(sender, text);
+  }
 }
 
-// TEXT-TO-SPEECH
 function speak(text) {
   if (selectedVoiceLang === "off") return;
-
   const utter = new SpeechSynthesisUtterance(text.replace(/\s+/g, " "));
   utter.lang = selectedVoiceLang;
-  utter.rate = 1;
+  utter.rate = 0.98;
   utter.pitch = 1;
   window.speechSynthesis.speak(utter);
   isSpeaking = true;
-
-  utter.onend = () => {
-    isSpeaking = false;
-  };
+  utter.onend = () => (isSpeaking = false);
 }
 
 function stopSpeaking() {
@@ -147,7 +162,6 @@ function stopSpeaking() {
   }
 }
 
-// SAVE CHAT
 function saveChat(sender, text) {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.push({ sender, text });
@@ -156,67 +170,58 @@ function saveChat(sender, text) {
 
 function loadChatHistory() {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
-  history.forEach(msg => {
-    appendMessage(msg.sender, msg.text);
+  history.forEach(msg => appendMessage(msg.sender, msg.text));
+}
+
+// Typing dots
+function showTypingIndicator() {
+  const chatBox = document.querySelector(".chat-box");
+  const dot = document.createElement("div");
+  dot.className = "bot-msg typing-dots";
+  dot.innerText = "AstroBot is typing...";
+  chatBox.appendChild(dot);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const dot = document.querySelector(".typing-dots");
+  dot?.remove();
+}
+
+// Suggestions
+function handleSuggestions(e) {
+  const val = e.target.value.trim();
+  const box = document.getElementById("suggestions");
+  if (!val || !fuse) return (box.innerHTML = "");
+  const result = fuse.search(val).slice(0, 3);
+  box.innerHTML = result.map(r => `<div class='suggestion'>${r.item.question}</div>`).join("\n");
+  document.querySelectorAll(".suggestion").forEach(el => {
+    el.addEventListener("click", () => {
+      document.getElementById("userInput").value = el.innerText;
+      box.innerHTML = "";
+    });
   });
 }
 
-// 🎙️ MIC VOICE INPUT
-function setupMic() {
-  const micBtn = document.getElementById("mic-btn");
-  const inputBox = document.getElementById("userInput");
-
-  let recognition;
-  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognition = new SpeechRecognition();
-    recognition.lang = "hi-IN";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      inputBox.value = transcript;
-      sendMessage(); // optional: auto-send
-    };
-
-    recognition.onerror = (event) => {
-      console.error("Voice error:", event.error);
-    };
-
-    micBtn.addEventListener("click", () => {
-      recognition.lang = document.getElementById("voice-toggle").value.includes("hi") ? "hi-IN" : "en-IN";
-      recognition.start();
-    });
-  } else {
-    micBtn.disabled = true;
-    micBtn.title = "Voice not supported in this browser";
-  }
+function hideSuggestions() {
+  document.getElementById("suggestions").innerHTML = "";
 }
 
-// 🧠 AUTO SUGGESTIONS
-function showSuggestions() {
-  const query = document.getElementById("userInput").value.trim();
-  const suggestionBox = document.getElementById("suggestions");
-
-  if (!query) {
-    suggestionBox.innerHTML = "";
+// Voice input
+function startVoiceInput() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("🎙️ Your browser does not support voice recognition.");
     return;
   }
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = selectedVoiceLang;
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
 
-  const results = fuse.search(query).slice(0, 5);
-  suggestionBox.innerHTML = results.map(r =>
-    `<div class="suggestion-item" onclick="fillSuggestion('${r.item.question}')">${r.item.question}</div>`
-  ).join("");
-}
-
-function fillSuggestion(text) {
-  document.getElementById("userInput").value = text;
-  document.getElementById("suggestions").innerHTML = "";
-  sendMessage(); // Optional: auto-send
-}
-
-function clearSuggestions() {
-  const suggestionBox = document.getElementById("suggestions");
-  suggestionBox.innerHTML = "";
+  recognition.onresult = (e) => {
+    document.getElementById("userInput").value = e.results[0][0].transcript;
+    sendMessage();
+  };
+  recognition.onerror = (e) => console.error("Speech error:", e);
+  recognition.start();
 }
