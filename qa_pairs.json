@@ -1,22 +1,82 @@
 [
-    {
-        "question": "What is Chandrayaan?",
-        "answer": "Chandrayaan is India’s lunar exploration program."
-    },
-    {
-        "question": "What is Aditya L1?",
-        "answer": "Aditya L1 is India’s solar mission to study the Sun's corona."
-    },
-    {
-        "question": "What is Mangalyaan?",
-        "answer": "Mangalyaan is India’s Mars Orbiter Mission, the first Indian mission to Mars."
-    },
-    {
-        "question": "what is isro",
-        "answer": "ISRO stands for Indian Space Research Organisation. It is India's national space agency."
-    },
-    {
-        "question": "who is the chairman of isro",
-        "answer": "As of 2024, the chairman of ISRO is S. Somanath."
-    }    
+  {
+    "question": "What is Chandrayaan?",
+    "answer": "Chandrayaan is India’s lunar exploration program."
+  },
+  {
+    "question": "What is Aditya L1?",
+    "answer": "Aditya L1 is India’s solar mission to study the Sun's corona."
+  },
+  {
+    "question": "What is Mangalyaan?",
+    "answer": "Mangalyaan is India’s Mars Orbiter Mission, the first Indian mission to Mars."
+  },
+  {
+    "question": "what is isro",
+    "answer": "ISRO stands for Indian Space Research Organisation. It is India's national space agency."
+  },
+  {
+    "question": "who is the chairman of isro",
+    "answer": "As of 2024, the chairman of ISRO is S. Somanath."
+  },
+  {
+    "question": "When was ISRO founded?",
+    "answer": "ISRO was founded on August 15, 1969."
+  },
+  {
+    "question": "Where is ISRO headquarters located?",
+    "answer": "ISRO headquarters is located in Bengaluru, Karnataka, India."
+  },
+  {
+    "question": "What is PSLV?",
+    "answer": "PSLV stands for Polar Satellite Launch Vehicle. It is one of ISRO's most successful launch vehicles."
+  },
+  {
+    "question": "What is GSLV?",
+    "answer": "GSLV stands for Geosynchronous Satellite Launch Vehicle, used for heavier satellites into geosynchronous orbit."
+  },
+  {
+    "question": "What is the full form of ISRO?",
+    "answer": "The full form of ISRO is Indian Space Research Organisation."
+  },
+  {
+    "question": "What is the Vikram Sarabhai Space Centre?",
+    "answer": "The Vikram Sarabhai Space Centre (VSSC) is a major space research center of ISRO located in Thiruvananthapuram."
+  },
+  {
+    "question": "Who was Vikram Sarabhai?",
+    "answer": "Vikram Sarabhai was the founder of the Indian space program and the first chairman of ISRO."
+  },
+  {
+    "question": "What is the INSAT series?",
+    "answer": "The INSAT series is a group of multipurpose geostationary satellites for telecommunications, television, and meteorology."
+  },
+  {
+    "question": "What is NAVIC?",
+    "answer": "NAVIC is India's regional satellite navigation system developed by ISRO."
+  },
+  {
+    "question": "What is the role of ISRO in education?",
+    "answer": "ISRO supports education through programs like EDUSAT and outreach initiatives to promote science among students."
+  },
+  {
+    "question": "Has India landed on the Moon?",
+    "answer": "Yes, Chandrayaan-3 successfully landed on the Moon’s south pole in August 2023."
+  },
+  {
+    "question": "Which was India's first satellite?",
+    "answer": "Aryabhata was India's first satellite, launched in 1975."
+  },
+  {
+    "question": "How does ISRO contribute to disaster management?",
+    "answer": "ISRO provides satellite imagery and data to support disaster warning, monitoring, and response systems."
+  },
+  {
+    "question": "What is the mission of ISRO?",
+    "answer": "The mission of ISRO is to harness space technology for national development while pursuing space science research."
+  },
+  {
+    "question": "What is SPOT in the context of ISRO?",
+    "answer": "SPOT refers to a French Earth observation satellite series that ISRO collaborated with for data exchange."
+  }
 ]
