@@ -10,11 +10,12 @@ fetch("qa_pairs.json")
     qaPairs = data;
     fuse = new Fuse(qaPairs, {
       keys: ["question"],
-      threshold: 0.4,
+      threshold: 0.45, // Allow mild spelling mistakes
       includeScore: true
     });
   });
 
+// Wait until DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("userInput");
   const themeToggle = document.getElementById("btn-mode");
@@ -29,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") sendMessage();
   });
 
-  themeToggle.addEventListener("change", () => {
+  themeToggle?.addEventListener("change", () => {
     setTheme(themeToggle.checked);
   });
 
-  voiceSelector.addEventListener("change", () => {
+  voiceSelector?.addEventListener("change", () => {
     selectedVoiceLang = voiceSelector.value;
   });
 
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Theme
+// Apply Light or Dark Theme
 function setTheme(isDark) {
   const body = document.body;
   const container = document.querySelector(".chat-container");
@@ -72,6 +73,15 @@ function updateMessageTheme(isDark) {
   });
 }
 
+// Normalize input (remove extra spaces, lowercased)
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s\u0900-\u097F]/g, "") // keep Hindi/English
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 // Main Chat Function
 async function sendMessage() {
   const input = document.getElementById("userInput");
@@ -82,8 +92,9 @@ async function sendMessage() {
   input.value = "";
   stopSpeaking();
 
-  // Try local JSON first (fuzzy match)
-  const results = fuse.search(message);
+  const query = normalize(message);
+  const results = fuse.search(query);
+
   if (results.length > 0 && results[0].score < 0.5) {
     const best = results[0].item;
     appendMessage("bot", best.answer);
@@ -108,25 +119,25 @@ async function sendMessage() {
   }
 }
 
-// Append Message to UI
+// Append messages to the chat UI
 function appendMessage(sender, text) {
   const chatBox = document.querySelector(".chat-box");
   const msg = document.createElement("div");
   msg.className = `${sender}-msg`;
-  msg.classList.add(document.getElementById("btn-mode").checked ? "night" : "light");
+  msg.classList.add(document.getElementById("btn-mode")?.checked ? "night" : "light");
   msg.innerText = text;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
   saveChat(sender, text);
 }
 
-// Voice Output
+// Text-to-Speech
 function speak(text) {
   if (selectedVoiceLang === "off") return;
 
   const utter = new SpeechSynthesisUtterance(text.replace(/\s+/g, " "));
   utter.lang = selectedVoiceLang;
-  utter.rate = 0.98;
+  utter.rate = 1;
   utter.pitch = 1;
   window.speechSynthesis.speak(utter);
   isSpeaking = true;
@@ -143,13 +154,14 @@ function stopSpeaking() {
   }
 }
 
-// Save/Load Chat from LocalStorage
+// Save chat to localStorage
 function saveChat(sender, text) {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.push({ sender, text });
   localStorage.setItem("chatHistory", JSON.stringify(history));
 }
 
+// Load previous chat
 function loadChatHistory() {
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   history.forEach(msg => {
